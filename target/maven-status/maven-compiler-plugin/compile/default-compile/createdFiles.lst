@@ -1,7 +1,7 @@
-FXML_Control.class
 GuiServer.class
 Client.class
 Server$ClientThread.class
 Server.class
+Controller.class
 GuiServer$1.class
 Server$TheServer.class

@@ -3,7 +3,6 @@ import java.util.HashMap;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -131,10 +130,11 @@ public class GuiServer extends Application{
 		try {
 			// Read file fxml and draw interface.
 			Parent root = FXMLLoader.load(getClass()
-					.getResource("/FXML/clientTextGUI.fxml"));
+					.getResource("/FXML/clientGUI.fxml"));
 
 			//primaryStage.setTitle("My Application");
 			Scene s1 = new Scene(root, 900,600);
+			s1.getStylesheets().add("/styles/clientStyle.css");
 			//s1.getStylesheets().add("/styles/style1.css");
 			//primaryStage.setScene(s1);
 			//primaryStage.show();
