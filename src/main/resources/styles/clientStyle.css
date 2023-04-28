@@ -1,0 +1,11 @@
+.root {
+    -fx-background-color: navy;
+}
+
+.menu-bar {
+    -fx-background-color: navy;
+}
+
+.menu {
+    -fx-text-fill: white;
+}
