@@ -21,6 +21,7 @@ public class Client extends Thread{
 
 		callback = call;
 	}
+
 	
 	public void run() {
 		
@@ -37,6 +38,7 @@ public class Client extends Thread{
 			try {
 			String message = in.readObject().toString();
 			callback.accept(message);
+			
 			}
 			catch(Exception e) {}
 		}

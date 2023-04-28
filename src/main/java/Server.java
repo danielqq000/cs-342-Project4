@@ -34,6 +34,18 @@ public class Server {
 		clients.remove(client);
 	}
 
+	// Method to send the client List
+	private synchronized void updateClientList() {
+		ArrayList<Integer> clientNumbers = new ArrayList<Integer>();
+		// change each client into client number
+		for (ClientThread client : clients) {
+			clientNumbers.add(client.count);
+		}
+		for (ClientThread client : clients) {
+			client.sendClientList(clientNumbers);
+		}
+	}
+
 	// Method to broadcast a message to all connected clients
 	private synchronized void broadcast(String message) {
 		for (ClientThread client : clients) {
@@ -86,6 +98,7 @@ public class Server {
 	}
 
 
+
 	class ClientThread extends Thread {
 		// Privatized variables
 		private Socket connection;
@@ -108,6 +121,16 @@ public class Server {
 			}
 		}
 
+		// Method to send the updated client list to the client
+		public void sendClientList(ArrayList<Integer> clientNumbers) {
+			try {
+				out.writeObject(clientNumbers);
+				out.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
 		public void run() {
 
 			try {
@@ -115,13 +138,26 @@ public class Server {
 				out = new ObjectOutputStream(connection.getOutputStream());
 				connection.setTcpNoDelay(true);
 
+				updateClientList();
 				broadcast("new client on server: client #" + count);
 
 				while (true) {
 					try {
 						String data = in.readObject().toString();
 						callback.accept("client #: " + count + " sent: " + data);
-						broadcast("client #" + count + " said: " + data);
+
+						// seperate data into three parts, sender, receiver, message
+						String[] parts = data.split(" > ");
+						int sender = Integer.parseInt(parts[0]);
+						String[] receiversStr = parts[1].split(":")[0].split(" ");
+						int[] receivers = new int[receiversStr.length];
+
+						for (int i = 0; i < receiversStr.length; i++) {
+							receivers[i] = Integer.parseInt(receiversStr[i]);
+						}
+						String message = parts[1].split(":")[1].trim();
+
+						messageSent(message, sender, receivers);
 
 					} catch (Exception e) {
 						callback.accept(
@@ -152,9 +188,3 @@ public class Server {
 		}
 	}
 }
-
-
-
-
-
-
