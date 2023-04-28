@@ -5,7 +5,9 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -126,9 +128,26 @@ public class GuiServer extends Application{
 	public Scene createClientGui() {
 		//clientList = new ComboBox();
 		//clientSelect = new HBox(10, clientList, b1);
-		clientBox = new VBox(10, c1, b1, listItems2);
-		clientBox.setStyle("-fx-background-color: navy");
-		return new Scene(clientBox, 600, 600);
+		try {
+			// Read file fxml and draw interface.
+			Parent root = FXMLLoader.load(getClass()
+					.getResource("/FXML/clientTextGUI.fxml"));
+
+			//primaryStage.setTitle("My Application");
+			Scene s1 = new Scene(root, 900,600);
+			//s1.getStylesheets().add("/styles/style1.css");
+			//primaryStage.setScene(s1);
+			//primaryStage.show();
+			return s1;
+
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
+		//clientBox = new VBox(10, c1, b1, listItems2);
+		//clientBox.setStyle("-fx-background-color: navy");
+		//return new Scene(clientBox, 400, 300);
+		return null;
 	}
 
 }
