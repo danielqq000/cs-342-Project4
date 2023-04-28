@@ -1,15 +1,18 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
-public class Controller {
+public class Controller { //implements Initializable {
     @FXML
     private VBox root;
     @FXML
     private Menu exitMenu;
+    @FXML
+    private MenuItem exitItem;
     @FXML
     private ListView clientsList;
     @FXML

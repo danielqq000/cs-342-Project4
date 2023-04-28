@@ -113,13 +113,34 @@ public class GuiServer extends Application{
 
 	public Scene createServerGui() {
 
-		BorderPane pane = new BorderPane();
+		/*BorderPane pane = new BorderPane();
 		pane.setPadding(new Insets(70));
 		pane.setStyle("-fx-background-color: coral");
 
 		pane.setCenter(listItems);
 
-		return new Scene(pane, 600, 600);
+		return new Scene(pane, 600, 600);*/
+		try {
+			// Read file fxml and draw interface.
+			Parent root = FXMLLoader.load(getClass()
+					.getResource("/FXML/serverGUI.fxml"));
+
+			//primaryStage.setTitle("My Application");
+			Scene s1 = new Scene(root, 900,600);
+			s1.getStylesheets().add("/styles/clientStyle.css");
+			//s1.getStylesheets().add("/styles/style1.css");
+			//primaryStage.setScene(s1);
+			//primaryStage.show();
+			return s1;
+
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
+		//clientBox = new VBox(10, c1, b1, listItems2);
+		//clientBox.setStyle("-fx-background-color: navy");
+		//return new Scene(clientBox, 400, 300);
+		return null;
 
 
 	}
