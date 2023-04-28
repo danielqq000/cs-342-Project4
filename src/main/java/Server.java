@@ -9,31 +9,7 @@ import java.io.IOException;
 
 import javafx.application.Platform;
 import javafx.scene.control.ListView;
-/*
- * Thread safety issues:
- * 1. Access to shared resources:
- *    - The 'clients' ArrayList is accessed by multiple threads (TheServer and ClientThread threads)
- *      without synchronization, leading to potential concurrent modifications and data inconsistencies.
- *      (Lines: 16, 30, 46, 57, 61, 68)
- * 2. ArrayList usage:
- *    - The 'clients' ArrayList is not thread safe, and concurrent modifications can occur from multiple threads.
- *      (Lines: 16, 30, 46, 57, 61, 68)
- * 3. Non-atomic operations:
- *    - The 'count' variable is accessed and modified by multiple threads without proper synchronization,
- *      leading to potential race conditions and lost updates. (Lines: 11, 28, 39, 58)
- * 4. Resource cleanup:
- *    - The 'ClientThread' does not properly close the ObjectInputStream, ObjectOutputStream, and Socket resources,
- *      leading to potential resource leaks. (Lines: 73, 75, 77)
- *
- * Potential issues if not fixed:
- * - Race conditions, data inconsistencies, and lost updates due to concurrent modifications of shared resources.
- * - Concurrent modification exceptions or other unexpected behavior due to unsafe ArrayList usage.
- * - Incorrect count tracking and potential inconsistencies in client count.
- * - Resource leaks and potential overuse of system resources.
- *
- * It is necessary to properly synchronize access to shared resources, use thread-safe data structures, ensure atomicity
- * of operations, and properly clean up resources to make the code thread safe.
- */
+
 
 public class Server {
 	// Privatized variables
@@ -65,6 +41,26 @@ public class Server {
 		}
 	}
 
+	// Method to show message between client messages
+	private synchronized void messageSent(String message, int sender, int[] receivers) {
+		StringBuilder receiverList = new StringBuilder();
+		for (int i = 0; i < receivers.length; i++) {
+			int receiverId = receivers[i];
+			for (ClientThread client : clients) {
+				if (client.count == receiverId) {
+					client.sendMessage(message);
+					if (i > 0) {
+						receiverList.append(", ");
+					}
+					receiverList.append("#").append(receiverId);
+					break;
+				}
+			}
+		}
+		callback.accept("Client #" + sender + " sent to " + receiverList.toString() +
+				": " + message);
+	}
+
 	public class TheServer extends Thread {
 
 		public void run() {
@@ -88,6 +84,7 @@ public class Server {
 			}
 		}
 	}
+
 
 	class ClientThread extends Thread {
 		// Privatized variables
@@ -123,7 +120,7 @@ public class Server {
 				while (true) {
 					try {
 						String data = in.readObject().toString();
-						callback.accept("client: " + count + " sent: " + data);
+						callback.accept("client #: " + count + " sent: " + data);
 						broadcast("client #" + count + " said: " + data);
 
 					} catch (Exception e) {
@@ -157,7 +154,7 @@ public class Server {
 }
 
 
-	
-	
 
-	
+
+
+
