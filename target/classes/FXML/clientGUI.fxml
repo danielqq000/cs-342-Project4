@@ -50,7 +50,7 @@
 
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.MenuItem?>
-<VBox fx:controller="Controller" fx:id="root" styleClass="root" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: navy;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:controller="ClientController" fx:id="root" styleClass="root" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: navy;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <MenuBar styleClass="menu-bar" nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: navy; -fx-text-fill: white;" VBox.vgrow="NEVER">
       <menus>
@@ -73,13 +73,13 @@
                 <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
               </textFill>
             </Label>
-                  <ListView fx:id="clientsList" layoutX="7.0" layoutY="41.0" prefHeight="494.0" prefWidth="256.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="4.4" />
+                  <ListView fx:id="clientsListView" layoutX="7.0" layoutY="41.0" prefHeight="494.0" prefWidth="256.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="4.4" />
           </children>
         </AnchorPane>
       <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="574.0" prefWidth="384.0">
         <children>
           <Label fx:id="messagesLabel" alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Messages" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-                  <ListView fx:id="messagesList" layoutX="-2.0" layoutY="42.0" prefHeight="494.0" prefWidth="360.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0">
+                  <ListView fx:id="messagesListView" layoutX="-2.0" layoutY="42.0" prefHeight="494.0" prefWidth="360.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -98,12 +98,12 @@
                      </font>
                   </TextField>
                   <Separator layoutX="6.0" layoutY="88.0" prefHeight="3.0" prefWidth="250.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="8.0" />
-                  <Button fx:id="sendButton" onAction="#handleSend" layoutX="83.0" layoutY="54.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" text="Send">
+                  <Button fx:id="sendButton" onAction="#handleSend" layoutX="83.0" layoutY="54.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" text="Send" >
                      <font>
                         <Font name="SansSerif Regular" size="14.0" />
                      </font>
                   </Button>
-                  <ListView fx:id="selectClientsList" layoutX="4.0" layoutY="130.0" prefHeight="406.0" prefWidth="256.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="4.4" AnchorPane.rightAnchor="6.0" />
+                  <ListView fx:id="selectClientsListView" layoutX="4.0" layoutY="130.0" prefHeight="406.0" prefWidth="256.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="4.4" AnchorPane.rightAnchor="6.0" />
           </children>
         </AnchorPane>
       </items>
@@ -127,3 +127,4 @@
     </HBox>
   </children>
 </VBox>
+

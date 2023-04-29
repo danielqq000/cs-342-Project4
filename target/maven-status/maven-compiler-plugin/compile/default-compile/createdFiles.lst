@@ -1,8 +1,9 @@
 GuiServer.class
 Client.class
+ClientController.class
 Server$ClientThread.class
+ClientController$1.class
 ServerController.class
 Server.class
-Controller.class
 GuiServer$1.class
 Server$TheServer.class

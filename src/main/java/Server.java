@@ -60,7 +60,9 @@ public class Server {
 	// Method to broadcast a message to all connected clients
 	private synchronized void broadcast(String message) {
 		for (ClientThread client : clients) {
-			client.sendMessage(message);
+			try{
+				client.out.writeObject(message);
+			}catch(Exception e) {}
 		}
 	}
 
