@@ -16,10 +16,12 @@ public class Server {
 	private int count = 1;
 	private ArrayList<ClientThread> clients = new ArrayList<ClientThread>();
 	private TheServer server;
-	private Consumer<Serializable> callback;
+	private Consumer<Serializable> listcallback;
+	private Consumer<Serializable> messagecallback;
 
-	Server(Consumer<Serializable> call) {
-		callback = call;
+	public Server(Consumer<Serializable> listcall, Consumer<Serializable> messagecall) {
+		listcallback = listcall;
+		messagecallback = messagecall;
 		server = new TheServer();
 		server.start();
 	}
@@ -34,13 +36,22 @@ public class Server {
 		clients.remove(client);
 	}
 
+	// Method to change client into a Integer List
+	protected synchronized ArrayList<Integer> getClientNum() {
+		ArrayList<Integer> clientNumbers = new ArrayList<Integer>();
+		for(ClientThread client : clients) {
+			clientNumbers.add(client.count);
+		}
+		return clientNumbers;
+	}
+
 	// Method to send the client List
 	private synchronized void updateClientList() {
 		ArrayList<Integer> clientNumbers = new ArrayList<Integer>();
-		// change each client into client number
-		for (ClientThread client : clients) {
-			clientNumbers.add(client.count);
-		}
+		clientNumbers = getClientNum();
+
+		listcallback.accept(clientNumbers);
+
 		for (ClientThread client : clients) {
 			client.sendClientList(clientNumbers);
 		}
@@ -69,7 +80,7 @@ public class Server {
 				}
 			}
 		}
-		callback.accept("Client #" + sender + " sent to " + receiverList.toString() +
+		messagecallback.accept("Client #" + sender + " sent to " + receiverList.toString() +
 				": " + message);
 	}
 
@@ -79,12 +90,14 @@ public class Server {
 
 			try (ServerSocket mysocket = new ServerSocket(5555);) {
 				//System.out.println("Server is waiting for a client!");
-				callback.accept("Server is waiting for a client!");
+				messagecallback.accept("Server is waiting for a client!");
 
 				while (true) {
 
 					ClientThread c = new ClientThread(mysocket.accept(), count);
-					callback.accept("client has connected to server: " + "client #" + count);
+					messagecallback.accept("client has connected to server: " + "client #" + count);
+					updateClientList();
+					System.out.println("client #" + count + " has connected");
 					addClient(c); // Call to addClient method to add the client to the clients ArrayList
 					c.start();
 
@@ -92,7 +105,7 @@ public class Server {
 
 				}
 			} catch (Exception e) {
-				callback.accept("Server socket did not launch");
+				messagecallback.accept("Server socket did not launch");
 			}
 		}
 	}
@@ -144,7 +157,7 @@ public class Server {
 				while (true) {
 					try {
 						String data = in.readObject().toString();
-						callback.accept("client #: " + count + " sent: " + data);
+						messagecallback.accept("client #: " + count + " sent: " + data);
 
 						// seperate data into three parts, sender, receiver, message
 						String[] parts = data.split(" > ");
@@ -160,10 +173,11 @@ public class Server {
 						messageSent(message, sender, receivers);
 
 					} catch (Exception e) {
-						callback.accept(
+						messagecallback.accept(
 								"Something wrong with the socket from client: " + count + "....closing down!");
 						broadcast("Client #" + count + " has left the server!");
 						removeClient(this); // Call to removeClient method to remove the client from the clients ArrayList
+						updateClientList();
 						break;
 					}
 				}

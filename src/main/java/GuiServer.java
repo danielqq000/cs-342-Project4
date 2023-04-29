@@ -46,7 +46,7 @@ public class GuiServer extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		primaryStage.setTitle("The Networked Client/Server GUI Example");
-		
+
 		this.serverChoice = new Button("Server");
 		this.serverChoice.setStyle("-fx-pref-width: 150px; -fx-pref-height: 80px");
 
@@ -57,9 +57,9 @@ public class GuiServer extends Application{
 				Platform.runLater(()->{
 					listItems.getItems().add(data.toString());
 				});
-
+			}, data2 -> {
+				Platform.runLater(()->{});
 			});
-
 		});
 
 
@@ -114,12 +114,12 @@ public class GuiServer extends Application{
 	public Scene createServerGui() {
 
 		/*BorderPane pane = new BorderPane();
-		pane.setPadding(new Insets(70));
-		pane.setStyle("-fx-background-color: coral");
+		  pane.setPadding(new Insets(70));
+		  pane.setStyle("-fx-background-color: coral");
 
-		pane.setCenter(listItems);
+		  pane.setCenter(listItems);
 
-		return new Scene(pane, 600, 600);*/
+		  return new Scene(pane, 600, 600);*/
 		try {
 			// Read file fxml and draw interface.
 			Parent root = FXMLLoader.load(getClass()

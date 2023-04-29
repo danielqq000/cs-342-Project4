@@ -47,63 +47,48 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: coral;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-  <children>
-    <MenuBar nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: coral; -fx-text-fill: white;" VBox.vgrow="NEVER">
-      <menus>
-        <Menu fx:id="exitMenu" mnemonicParsing="false" style="-fx-text-fill: white;" text="Exit">
-               <items>
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="exitItem" mnemonicParsing="false" text="Exit" />
-               </items></Menu>
-      </menus>
-    </MenuBar>
-    <SplitPane dividerPositions="0.29964381121994654" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-      <items>
-        <AnchorPane>
-          <children>
-            <Label fx:id="clientsLabel" alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Clients" textAlignment="CENTER" wrapText="false" AnchorPane.topAnchor="14.0">
-              <font>
-                <Font name="SansSerif Regular" size="18.0" fx:id="x1" />
-              </font>
-              <textFill>
-                <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
-              </textFill>
-            </Label>
-                  <ListView fx:id="clientsList" layoutX="7.0" layoutY="41.0" prefHeight="494.0" prefWidth="256.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="4.4" />
-          </children>
-        </AnchorPane>
-      <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="574.0" prefWidth="384.0">
-        <children>
-          <Label fx:id="messagesLabel" alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Messages" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-                  <ListView fx:id="messagesList" layoutX="-2.0" layoutY="42.0" prefHeight="494.0" prefWidth="354.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </ListView>
-        </children>
-               <padding>
-                  <Insets top="20.0" />
-               </padding>
-      </AnchorPane>
-      </items>
-    </SplitPane>
-    <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
-      <children>
-        <Label fx:id="clientsLowLabel" maxHeight="1.7976931348623157E308" maxWidth="-1.0" HBox.hgrow="ALWAYS">
-          <font>
-            <Font size="11.0" fx:id="x3" />
-          </font>
-          <textFill>
-            <Color red="0.625" green="0.625" blue="0.625" fx:id="x4" />
-          </textFill>
-        </Label>
-        <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
-        <Label fx:id="selectClientLowLabel" font="$x3" maxWidth="-1.0" textFill="$x4" HBox.hgrow="NEVER" />
-      </children>
-      <padding>
-        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-      </padding>
-    </HBox>
-  </children>
+<VBox prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: coral;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ServerController">
+	<MenuBar nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: coral; -fx-text-fill: white;" VBox.vgrow="NEVER">
+	</MenuBar>
+	<SplitPane dividerPositions="0.29964381121994654" style="-fx-background-color: coral;" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+		<items>
+			<AnchorPane>
+				<Label fx:id="clientsLabel" alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10; -fx-text-fill: darkblue;" text="Clients" textAlignment="CENTER" wrapText="false" AnchorPane.topAnchor="14.0">
+					<font>
+						<Font name="SansSerif Regular" size="18.0" fx:id="x1" />
+					</font>
+					<textFill>
+						<Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
+					</textFill>
+				</Label>
+				<ListView fx:id="clientsList" layoutX="7.0" layoutY="41.0" prefHeight="494.0" prefWidth="256.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="4.4" />
+			</AnchorPane>
+			<AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="574.0" prefWidth="384.0">
+				<Label fx:id="messagesLabel" alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10; -fx-text-fill: darkblue;" text="Messages" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+				<ListView fx:id="messagesList" layoutX="-2.0" layoutY="42.0" prefHeight="494.0" prefWidth="354.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0">
+					<opaqueInsets>
+						<Insets />
+					</opaqueInsets>
+				</ListView>
+				<padding>
+					<Insets top="20.0" />
+				</padding>
+			</AnchorPane>
+		</items>
+	</SplitPane>
+	<HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
+		<Label fx:id="clientsLowLabel" maxHeight="1.7976931348623157E308" maxWidth="-1.0" HBox.hgrow="ALWAYS">
+			<font>
+				<Font size="11.0" fx:id="x3" />
+			</font>
+			<textFill>
+				<Color red="0.625" green="0.625" blue="0.625" fx:id="x4" />
+			</textFill>
+		</Label>
+		<Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
+		<Label fx:id="selectClientLowLabel" font="$x3" maxWidth="-1.0" textFill="$x4" HBox.hgrow="NEVER" />
+		<padding>
+			<Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+		</padding>
+	</HBox>
 </VBox>

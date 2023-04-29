@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-11-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/danielqq000/CS342/project4/target/surefire/surefirebooter5622391990684279934.jar /home/danielqq000/CS342/project4/target/surefire 2023-04-28T15-49-02_068-jvmRun1 surefire4100189036497907344tmp surefire_05721118801288441170tmp"/>
+    <property name="sun.java.command" value="/home/danielqq000/CS342/project4/target/surefire/surefirebooter7364309329295688719.jar /home/danielqq000/CS342/project4/target/surefire 2023-04-28T19-25-18_755-jvmRun1 surefire16885788497341024273tmp surefire_08015011763539744801tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/danielqq000/CS342/project4/target/test-classes:/home/danielqq000/CS342/project4/target/classes:/home/danielqq000/.m2/repository/org/junit/jupiter/junit-jupiter/5.9.1/junit-jupiter-5.9.1.jar:/home/danielqq000/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.1/junit-jupiter-api-5.9.1.jar:/home/danielqq000/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/danielqq000/.m2/repository/org/junit/platform/junit-platform-commons/1.9.1/junit-platform-commons-1.9.1.jar:/home/danielqq000/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/danielqq000/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.1/junit-jupiter-params-5.9.1.jar:/home/danielqq000/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.1/junit-jupiter-engine-5.9.1.jar:/home/danielqq000/.m2/repository/org/junit/platform/junit-platform-engine/1.9.1/junit-platform-engine-1.9.1.jar:/home/danielqq000/.m2/repository/org/openjfx/javafx-controls/19.0.2.1/javafx-controls-19.0.2.1.jar:/home/danielqq000/.m2/repository/org/openjfx/javafx-controls/19.0.2.1/javafx-controls-19.0.2.1-linux.jar:/home/danielqq000/.m2/repository/org/openjfx/javafx-graphics/19.0.2.1/javafx-graphics-19.0.2.1.jar:/home/danielqq000/.m2/repository/org/openjfx/javafx-graphics/19.0.2.1/javafx-graphics-19.0.2.1-linux.jar:/home/danielqq000/.m2/repository/org/openjfx/javafx-base/19.0.2.1/javafx-base-19.0.2.1.jar:/home/danielqq000/.m2/repository/org/openjfx/javafx-base/19.0.2.1/javafx-base-19.0.2.1-linux.jar:/home/danielqq000/.m2/repository/org/openjfx/javafx-fxml/19.0.2.1/javafx-fxml-19.0.2.1.jar:/home/danielqq000/.m2/repository/org/openjfx/javafx-fxml/19.0.2.1/javafx-fxml-19.0.2.1-linux.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -32,7 +32,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/home/danielqq000/CS342/project4/target/surefire/surefirebooter5622391990684279934.jar"/>
+    <property name="surefire.real.class.path" value="/home/danielqq000/CS342/project4/target/surefire/surefirebooter7364309329295688719.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="11.0.17+8-post-Ubuntu-1ubuntu222.04"/>
     <property name="user.name" value="danielqq000"/>
